@@ -164,20 +164,24 @@ const CheckoutModal = ({ open, onClose, book, quantity = 1 }: CheckoutModalProps
                 </div>
 
                 <DialogFooter>
-                    <Button
-                        variant="outline"
-                        onClick={onClose}
-                        disabled={isLoading}
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        variant="default"
-                        onClick={handleConfirmCheckout}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Processing...' : 'Confirm Purchase'}
-                    </Button>
+                    <div className="flex justify-between gap-4 w-full">
+                        <Button
+                            variant="outline"
+                            onClick={onClose}
+                            disabled={isLoading}
+                            className="w-1/2"
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            variant="default"
+                            onClick={handleConfirmCheckout}
+                            disabled={isLoading}
+                            className="w-1/2"
+                        >
+                            {isLoading ? 'Processing...' : 'Confirm Purchase'}
+                        </Button>
+                    </div>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

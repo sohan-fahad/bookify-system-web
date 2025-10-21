@@ -35,8 +35,8 @@ const ProfileInfo = () => {
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'Join me on BookStore',
-                    text: 'Check out this amazing book store!',
+                    title: 'Join me on Bookify',
+                    text: 'Check out this amazing bookify!',
                     url: referralUrl,
                 });
             } catch (err) {
@@ -85,13 +85,13 @@ const ProfileInfo = () => {
 
             <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
-                    <Text size="base" weight="semibold" color="muted" className="flex items-center" >
+                    <Text size="base" weight="semibold" color="muted" className="flex items-center " >
                         <Link2 className="h-4 w-4 mr-2" />
                         Invite & Earn Rewards
                     </Text>
 
                 </div>
-                <Text size="xs" weight="bold" color="primary" className="font-mono">
+                <Text size="xs" weight="bold" color="primary" className="font-mono text-wrap truncate">
                     {referralUrl}
                 </Text>
                 <div className="flex gap-2 mt-4">

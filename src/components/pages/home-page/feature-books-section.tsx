@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import ProductCard from './product-card';
-import { useBooks } from '@src/hooks/queries';
 import { BookEntity } from '@src/models/entities';
 import { Suspense, useState } from 'react';
 import useAuthenticationStore from '@src/hooks/stores/useAuthenticationStore';
@@ -25,7 +24,7 @@ const FeaturedBooksSection = ({ books }: FeaturedBooksSectionProps) => {
 
     const handleBuyNow = (book: BookEntity) => {
         if (!isLoggedIn) {
-            router.push('/auth/login');
+            router.push('/auth');
             return;
         }
         setSelectedBook(book);
