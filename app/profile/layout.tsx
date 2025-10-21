@@ -2,23 +2,18 @@
 
 import { Text } from '@src/components/ui';
 import { motion } from 'framer-motion';
-import { User, History, Settings, LogOut } from 'lucide-react';
+import { User, History, LogOut } from 'lucide-react';
 import Navbar from '@src/components/layouts/navbar';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthenticationStore } from '@src/hooks/stores';
 import { toast } from 'react-toastify';
 import AuthCheck from '@src/components/layouts/auth-check';
-import { Metadata } from 'next';
 
 interface ProfileLayoutProps {
     children: React.ReactNode;
 }
 
-export const metadata: Metadata = {
-    title: "Profile - Bookify",
-    description: "Manage your profile and orders",
-};
 
 const ProfileLayout = ({ children }: ProfileLayoutProps) => {
     const pathname = usePathname();

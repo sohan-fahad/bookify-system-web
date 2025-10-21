@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const RouteChangeLoader = () => {
     const pathname = usePathname();
-    const searchParams = useSearchParams();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -16,7 +15,7 @@ const RouteChangeLoader = () => {
         }, 300);
 
         return () => clearTimeout(timer);
-    }, [pathname, searchParams]);
+    }, [pathname]);
 
     if (!loading) return null;
 
