@@ -51,7 +51,7 @@ const Footer = () => {
 
                 <div className="border-t border-gray-800 mt-8 pt-8 text-center">
                     <Text color="muted">
-                        © 2024 BookStore. All rights reserved.
+                        © {new Date().getFullYear()} Bookify. All rights reserved.
                     </Text>
                 </div>
             </div>

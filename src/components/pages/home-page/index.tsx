@@ -1,16 +1,20 @@
 import Navbar from '@src/components/layouts/navbar';
 import HeroBanner from './hero-banner';
-import CategoriesSection from './categories-section';
 import FeaturedBooksSection from './feature-books-section';
 import Footer from './footer';
+import { BookEntity } from '@src/models/entities';
 
-const HomePage = () => {
+interface HomePageProps {
+    books: BookEntity[];
+}
+
+const HomePage = ({ books }: HomePageProps) => {
     return (
         <div className="min-h-screen">
             <Navbar />
             <HeroBanner />
             {/* <CategoriesSection /> */}
-            <FeaturedBooksSection />
+            <FeaturedBooksSection books={books} />
             <Footer />
         </div>
     );

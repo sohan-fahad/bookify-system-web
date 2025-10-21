@@ -9,19 +9,14 @@ import { BookEntity } from '@src/models/entities';
 interface ProductCardProps {
     book: BookEntity;
     index: number;
-    isLoading?: boolean;
     onBuyNow: (book: BookEntity) => void;
 }
 
-const ProductCard = ({ book, index, isLoading, onBuyNow }: ProductCardProps) => {
+const ProductCard = ({ book, index, onBuyNow }: ProductCardProps) => {
 
     const handleBuyNow = () => {
         onBuyNow(book);
     };
-
-    if (isLoading) {
-        return <ProductCardSkeleton />;
-    }
 
     return (
         <div key={index} className="group bg-secondary rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-out cursor-pointer">
