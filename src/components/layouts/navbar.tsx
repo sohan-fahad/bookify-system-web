@@ -68,10 +68,6 @@ const Navbar = () => {
                             <AnimatePresence>
                                 {isDropdownOpen && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: -10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ duration: 0.2 }}
                                         className="absolute right-0 mt-2 w-64 bg-secondary rounded-lg shadow-xl border border-gray-200/10 overflow-hidden"
                                     >
                                         <div className="px-4 py-3 border-b border-gray-200/10 bg-primary/5">
@@ -83,7 +79,7 @@ const Navbar = () => {
                                             </Text>
                                         </div>
 
-                                        <div className="py-2">
+                                        <div className="">
                                             <Link href="/profile" onClick={closeDropdown}>
                                                 <div className="flex items-center gap-3 px-4 py-2.5 hover:bg-primary/10 transition-colors cursor-pointer">
                                                     <UserCircle className="h-5 w-5 text-primary" />

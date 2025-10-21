@@ -40,7 +40,7 @@ const FeaturedBooksSection = ({ books }: FeaturedBooksSectionProps) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="py-0 sm:py-8"
+                className="py-0 sm:py-8 mb-6"
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {books.length === 0 ? <BooksListSkeleton />

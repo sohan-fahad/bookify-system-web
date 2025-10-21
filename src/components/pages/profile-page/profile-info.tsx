@@ -57,7 +57,7 @@ const ProfileInfo = () => {
                         {user?.name}
                     </Text>
                     <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-full px-4 py-1">
-                        <Text size="xs" weight="bold" color="primary">
+                        <Text size="sm" weight="bold" color="primary">
                             Credit Balance: {user?.credits}
                         </Text>
                     </div>
@@ -80,19 +80,6 @@ const ProfileInfo = () => {
                 </div>
             </div>
 
-            <Button onClick={() => router.push('/profile/orders')} className="space-y-4 mb-6 bg-primary p-4 sm:hidden block w-full h-auto">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center justify-between gap-3 w-full">
-                        <div className="flex items-center gap-2">
-                            <Package className="size-6 text-white" />
-                            <Text size="sm" weight="medium" color="muted">
-                                Order History
-                            </Text>
-                        </div>
-                        <ChevronRight className="size-6 text-white" />
-                    </div>
-                </div>
-            </Button>
 
 
 

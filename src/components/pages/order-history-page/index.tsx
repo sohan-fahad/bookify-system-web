@@ -43,8 +43,8 @@ const OrderHistoryPage = () => {
                 <ArrowLeft className="size-6 text-primary" />
             </button>
             <div className="bg-secondary rounded-lg p-4 lg:p-6 shadow-sm">
-                <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-3">
+                <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3 border-b w-full pb-4 border-white/10">
                         <div className="p-2 bg-primary/10 rounded-lg">
                             <ShoppingCart className="h-5 w-5 text-primary" />
                         </div>
@@ -79,13 +79,7 @@ const OrderHistoryPage = () => {
                                                 <Text weight="semibold" className="text-foreground">
                                                     Order #{order._id.slice(-8).toUpperCase()}
                                                 </Text>
-                                                {order.isFirstPurchase && (
-                                                    <span className="px-2 py-0.5 bg-primary/20 text-primary rounded-full">
-                                                        <Text size="xs" weight="medium" className="text-primary">
-                                                            First Order
-                                                        </Text>
-                                                    </span>
-                                                )}
+
                                             </div>
 
                                             <div className="flex items-center gap-4 mt-1 flex-wrap">
@@ -138,7 +132,7 @@ const OrderHistoryPage = () => {
                 )}
 
                 {orders && orders.length > 0 && (
-                    <div className="flex items-center justify-between pt-6 mt-6 border-t border-gray-200/10">
+                    <div className="flex items-center justify-between pt-6 mt-0 border-t border-gray-200/10">
                         <Text size="sm" color="muted">
                             Page {currentPage}
                         </Text>
