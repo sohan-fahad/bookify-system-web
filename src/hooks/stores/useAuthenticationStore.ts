@@ -25,11 +25,14 @@ const useAuthenticationStore = create<IAuthenticationStore>()(
                 set({ token });
                 SessionUtils.setToken(token || '');
             },
-            logout: () => set({
-                isLoggedIn: false,
-                user: null,
-                token: null
-            }),
+            logout: () => {
+                set({
+                    isLoggedIn: false,
+                    user: null,
+                    token: null
+                })
+                SessionUtils.removeToken();
+            }
         }),
         {
             name: "auth-storage",

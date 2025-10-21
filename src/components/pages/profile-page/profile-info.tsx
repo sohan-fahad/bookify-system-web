@@ -3,14 +3,16 @@
 import { Text } from '@src/components/ui';
 import { Button } from '@src/components/ui';
 import { useAuthenticationStore } from '@src/hooks/stores';
-import { User, Mail, Check, Copy, Share2, Link2 } from 'lucide-react';
+import { User, Mail, Check, Copy, Share2, Link2, Package, ArrowRight, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useMe } from '@src/hooks/queries';
+import { useRouter } from 'next/navigation';
 
 const ProfileInfo = () => {
     const { data: user, isLoading } = useMe();
     const [copied, setCopied] = useState(false);
     const [referralUrl, setReferralUrl] = useState('');
+    const router = useRouter();
 
 
     useEffect(() => {
@@ -67,7 +69,7 @@ const ProfileInfo = () => {
                 </Button> */}
             </div>
 
-            <div className="space-y-4 mb-6 bg-primary/5 border border-primary/20 rounded-xl p-4">
+            <div className="space-y-4 mb-4 bg-primary/5 border border-primary/20 rounded-xl p-4">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <Mail className="size-6 text-primary" />
@@ -78,13 +80,27 @@ const ProfileInfo = () => {
                 </div>
             </div>
 
+            <Button onClick={() => router.push('/profile/orders')} className="space-y-4 mb-6 bg-primary p-4 sm:hidden block w-full h-auto">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-3 w-full">
+                        <div className="flex items-center gap-2">
+                            <Package className="size-6 text-white" />
+                            <Text size="sm" weight="medium" color="muted">
+                                Order History
+                            </Text>
+                        </div>
+                        <ChevronRight className="size-6 text-white" />
+                    </div>
+                </div>
+            </Button>
+
 
 
             <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
                     <Text size="base" weight="semibold" color="muted" className="flex items-center" >
                         <Link2 className="h-4 w-4 mr-2" />
-                        Invite & earn rewards
+                        Invite & Earn Rewards
                     </Text>
 
                 </div>
