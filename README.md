@@ -41,8 +41,8 @@ A modern eBook purchase platform built with Next.js featuring a referral reward 
 ### 1. Clone the repository
 
 ```bash
-git clone <https://github.com/sohan-fahad/referral-system-web.git>
-cd referral-system-web
+git clone https://github.com/sohan-fahad/bookify-system-web.git
+cd bookify-system-web
 ```
 
 ### 2. Install dependencies
