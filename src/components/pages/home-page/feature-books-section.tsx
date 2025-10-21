@@ -46,7 +46,7 @@ const FeaturedBooksSection = ({ books }: FeaturedBooksSectionProps) => {
                     {books.length === 0 ? <BooksListSkeleton />
                         :
                         <Suspense fallback={<BooksListSkeleton />}>
-                            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+                            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
                                 {books?.map((book: BookEntity, index: number) => (
                                     <ProductCard
                                         key={book._id}
