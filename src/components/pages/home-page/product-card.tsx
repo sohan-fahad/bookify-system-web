@@ -30,7 +30,7 @@ const ProductCard = ({ book, index, onBuyNow }: ProductCardProps) => {
                         className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
 
-                    <div className='absolute bottom-0 left-0 right-0 px-4 pb-4 opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out bg-gradient-to-t from-black/60 via-black/40 to-transparent'>
+                    <div className='absolute bottom-0 left-0 right-0 px-4 pb-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-full md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 ease-out bg-gradient-to-t from-black/60 via-black/40 to-transparent'>
                         <Button className='w-full bg-primary hover:bg-primary/90 transition-colors duration-300' onClick={handleBuyNow}>
                             <ShoppingCart className='w-4 h-4 mr-2' />
                             Buy Now
