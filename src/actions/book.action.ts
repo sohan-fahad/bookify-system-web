@@ -9,7 +9,6 @@ export async function getBooks(query: { page?: number; limit?: number }) {
         const response = await fetch(
             `${apiUrl}/books?page=${query.page || 1}&limit=${query.limit || 10}`,
             {
-                cache: 'no-store',
                 next: { revalidate: 60 },
                 headers: {
                     'Content-Type': 'application/json',
