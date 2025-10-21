@@ -18,7 +18,6 @@ interface IResponse<T> {
 
 const getAuthHeaders = async (config?: IConfig): Promise<IConfig> => {
     const token = SessionUtils.getToken();
-    console.log('token', token);
     if (token) {
         config = {
             ...(config || {}),
@@ -50,7 +49,6 @@ const post = async <T>(path: string, config: IConfig): Promise<IResponse<T>> => 
     try {
         config = await getAuthHeaders(config);
         config.method = 'POST';
-        console.log('config', config);
         const response = await fetch(`${ENV.API_BASE_URL}${path}`, { ...config });
         const data: T = await response.json();
         return {

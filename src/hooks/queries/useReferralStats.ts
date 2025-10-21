@@ -1,12 +1,12 @@
-import { UserService } from "@src/services/apis";
 import { useQuery } from "@tanstack/react-query";
 import SessionUtils from "@src/utils/session.utils";
+import { ReferralService } from "@src/services/apis";
 
-export const useMe = () => {
+export const useMyReferralStats = () => {
     return useQuery({
-        queryKey: ['me'],
+        queryKey: ["referral-stats"],
         queryFn: async () => {
-            const response = await UserService.getMyProfile();
+            const response = await ReferralService.getMyReferralStats();
             return response.data;
         },
         enabled: !!SessionUtils.getToken(),

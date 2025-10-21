@@ -1,4 +1,5 @@
 import * as React from "react"
+import { cn } from "@src/utils/cn.utils"
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "default" | "destructive" | "outline" | "ghost" | "link"
@@ -25,16 +26,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             icon: "h-10 w-10",
         }
 
-        const combinedClasses = [
-            baseClasses,
-            variantClasses[variant],
-            sizeClasses[size],
-            className
-        ].filter(Boolean).join(" ")
-
         return (
             <button
-                className={combinedClasses}
+                className={cn(
+                    baseClasses,
+                    variantClasses[variant],
+                    sizeClasses[size],
+                    className
+                )}
                 ref={ref}
                 {...props}
             >

@@ -1,12 +1,12 @@
-import { UserService } from "@src/services/apis";
 import { useQuery } from "@tanstack/react-query";
 import SessionUtils from "@src/utils/session.utils";
+import { OrderService } from "@src/services/apis";
 
-export const useMe = () => {
+export const useMyOrders = (query: { page: number, limit: number }) => {
     return useQuery({
-        queryKey: ['me'],
+        queryKey: ["my-orders"],
         queryFn: async () => {
-            const response = await UserService.getMyProfile();
+            const response = await OrderService.getMyOrders(query);
             return response.data;
         },
         enabled: !!SessionUtils.getToken(),

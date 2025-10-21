@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "./button";
+import { cn } from "@src/utils/cn.utils";
 
 export interface DialogProps {
     open: boolean;
@@ -37,21 +38,13 @@ const Dialog = ({
     const dialogRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        // const handleEscape = (event: KeyboardEvent) => {
-        //     if (closeOnEscape && event.key === "Escape") {
-        //         onClose();
-        //     }
-        // };
-
         if (open) {
-            // document.addEventListener("keydown", handleEscape);
             if (preventScroll) {
                 document.body.style.overflow = "hidden";
             }
         }
 
         return () => {
-            // document.removeEventListener("keydown", handleEscape);
             if (preventScroll) {
                 document.body.style.overflow = "unset";
             }
@@ -110,7 +103,11 @@ const Dialog = ({
         <AnimatePresence>
             {open && (
                 <motion.div
-                    className={`fixed inset-0 z-50 flex ${positionClasses[position]} ${overlayClassName}`}
+                    className={cn(
+                        "fixed inset-0 z-50 flex",
+                        positionClasses[position],
+                        overlayClassName
+                    )}
                     onClick={handleOverlayClick}
                     variants={overlayVariants}
                     initial="hidden"
@@ -122,7 +119,12 @@ const Dialog = ({
 
                     <motion.div
                         ref={dialogRef}
-                        className={`relative bg-background rounded-lg shadow-xl w-full ${sizeClasses[size]} ${contentClassName} ${className}`}
+                        className={cn(
+                            "relative bg-background rounded-lg shadow-xl w-full",
+                            sizeClasses[size],
+                            contentClassName,
+                            className
+                        )}
                         onClick={handleDialogClick}
                         variants={dialogVariants}
                         initial="hidden"
@@ -158,7 +160,7 @@ const DialogHeader = ({
     children: React.ReactNode;
     className?: string;
 }) => (
-    <div className={`flex flex-col space-y-1.5 pb-4 ${className}`}>
+    <div className={cn("flex flex-col space-y-1.5 pb-4", className)}>
         {children}
     </div>
 );
@@ -170,7 +172,7 @@ const DialogTitle = ({
     children: React.ReactNode;
     className?: string;
 }) => (
-    <h2 className={`text-lg font-semibold leading-none tracking-tight ${className}`}>
+    <h2 className={cn("text-lg font-semibold leading-none tracking-tight", className)}>
         {children}
     </h2>
 );
@@ -182,7 +184,7 @@ const DialogDescription = ({
     children: React.ReactNode;
     className?: string;
 }) => (
-    <p className={`text-sm text-muted-foreground ${className}`}>
+    <p className={cn("text-sm text-muted-foreground", className)}>
         {children}
     </p>
 );
@@ -194,7 +196,7 @@ const DialogContent = ({
     children: React.ReactNode;
     className?: string;
 }) => (
-    <div className={`space-y-4 ${className}`}>
+    <div className={cn("space-y-4", className)}>
         {children}
     </div>
 );
@@ -206,7 +208,7 @@ const DialogFooter = ({
     children: React.ReactNode;
     className?: string;
 }) => (
-    <div className={`flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 pt-4 ${className}`}>
+    <div className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 pt-4", className)}>
         {children}
     </div>
 );

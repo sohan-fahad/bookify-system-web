@@ -1,4 +1,5 @@
 import * as React from "react"
+import { cn } from "@src/utils/cn.utils"
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
     as?: "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "label" | "strong" | "em" | "small"
@@ -65,7 +66,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
             right: "text-right",
             justify: "text-justify",
         }
-        // Decoration classes
+
         const decorationClasses = {
             none: "no-underline",
             underline: "underline",
@@ -79,23 +80,21 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
             capitalize: "capitalize",
         }
 
-        const combinedClasses = [
-            sizeClasses[size],
-            colorClasses[color],
-            weightClasses[weight],
-            alignClasses[align],
-            decorationClasses[decoration],
-            transformClasses[transform],
-            truncate ? "truncate" : "",
-            className
-        ].filter(Boolean).join(" ")
-
         const Component = as as keyof React.JSX.IntrinsicElements
 
         return React.createElement(
             Component,
             {
-                className: combinedClasses,
+                className: cn(
+                    sizeClasses[size],
+                    colorClasses[color],
+                    weightClasses[weight],
+                    alignClasses[align],
+                    decorationClasses[decoration],
+                    transformClasses[transform],
+                    truncate && "truncate",
+                    className
+                ),
                 ref,
                 ...props,
             },

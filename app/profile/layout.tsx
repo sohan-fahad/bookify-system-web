@@ -5,7 +5,9 @@ import { motion } from 'framer-motion';
 import { User, History, Settings, LogOut } from 'lucide-react';
 import Navbar from '@src/components/layouts/navbar';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuthenticationStore } from '@src/hooks/stores';
+import { toast } from 'react-toastify';
 
 interface ProfileLayoutProps {
     children: React.ReactNode;
@@ -13,6 +15,7 @@ interface ProfileLayoutProps {
 
 const ProfileLayout = ({ children }: ProfileLayoutProps) => {
     const pathname = usePathname();
+    const router = useRouter();
     const sidebarItems = [
         {
             id: 'profile',
@@ -27,6 +30,14 @@ const ProfileLayout = ({ children }: ProfileLayoutProps) => {
             href: '/profile/orders'
         }
     ];
+
+    const logout = useAuthenticationStore((state) => state.logout);
+
+    const handleLogout = () => {
+        toast.success('Logged out successfully');
+        logout();
+        router.push('/');
+    };
 
     return (
         <div className="min-h-screen bg-background">
@@ -62,7 +73,8 @@ const ProfileLayout = ({ children }: ProfileLayoutProps) => {
 
                             <motion.button
                                 whileHover={{ x: 4 }}
-                                className="flex items-center space-x-3 px-4 py-3 rounded-lg text-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-200 w-full text-left"
+                                className="flex items-center space-x-3 px-4 py-3 rounded-lg text-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-200 w-full text-left cursor-pointer"
+                                onClick={handleLogout}
                             >
                                 <LogOut className="size-4" />
                                 <Text size="sm" weight="semibold">Logout</Text>

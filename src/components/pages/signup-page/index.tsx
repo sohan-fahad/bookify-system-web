@@ -53,7 +53,7 @@ const SignUpPage = () => {
             setIsLoggedIn(true);
             toast.success('Account created successfully!');
 
-            router.push('/profile');
+            router.push('/');
 
         } catch (error: any) {
             toast.error(error?.message || 'Registration failed. Please try again.');

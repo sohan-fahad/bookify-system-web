@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useMe } from '@src/hooks/queries';
 
 const ProfileInfo = () => {
-    const { data: user } = useMe();
+    const { data: user, isLoading } = useMe();
     const [copied, setCopied] = useState(false);
     const [referralUrl, setReferralUrl] = useState('');
 

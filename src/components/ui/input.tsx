@@ -1,4 +1,5 @@
 import * as React from "react";
+import { cn } from "@src/utils/cn.utils";
 
 type CustomInputSize = "sm" | "default" | "lg";
 
@@ -28,7 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         const baseClasses = "flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-black file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset disabled:cursor-not-allowed disabled:opacity-50 transition-colors";
 
         const variantClasses = {
-            default: "border-gray-300 bg-gray-600 hover:border-gray-400 focus:border-primary text-black ",
+            default: "border-gray-300 bg-white hover:border-gray-400 focus:border-primary text-black ",
             outline: "border-2 border-gray-300 bg-transparent hover:border-gray-400 focus:border-primary",
             filled: "border-0 bg-gray-100 hover:bg-gray-200 focus:bg-white focus:ring-2 focus:ring-primary",
             ghost: "border-0 bg-transparent hover:bg-gray-100 focus:bg-white focus:ring-2 focus:ring-primary",
@@ -44,14 +45,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ? "border-red-500 focus-visible:ring-red-500"
             : "";
 
-        const combinedClasses = [
-            baseClasses,
-            variantClasses[variant],
-            sizeClasses[size],
-            errorClasses,
-            className
-        ].filter(Boolean).join(" ");
-
         const inputElement = (
             <div className="relative">
                 {leftIcon && (
@@ -60,7 +53,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     </div>
                 )}
                 <input
-                    className={`${combinedClasses} ${leftIcon ? 'pl-10' : ''} ${rightIcon ? 'pr-10' : ''}`}
+                    className={cn(
+                        baseClasses,
+                        variantClasses[variant],
+                        sizeClasses[size],
+                        errorClasses,
+                        leftIcon && 'pl-10',
+                        rightIcon && 'pr-10',
+                        className
+                    )}
                     ref={ref}
                     {...props}
                 />
@@ -82,7 +83,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     )}
                     {inputElement}
                     {helperText && (
-                        <p className={`text-xs block ${error ? 'text-red-500' : 'text-gray-500'}`}>
+                        <p className={cn(
+                            "text-xs block",
+                            error ? 'text-red-500' : 'text-gray-500'
+                        )}>
                             {helperText}
                         </p>
                     )}

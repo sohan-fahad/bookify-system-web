@@ -45,7 +45,7 @@ const SignInPage = () => {
             setIsLoggedIn(true);
             toast.success('Welcome back!');
 
-            router.push('/profile');
+            router.push('/');
 
         } catch (error: any) {
             toast.error(error?.message || 'Invalid credentials');
