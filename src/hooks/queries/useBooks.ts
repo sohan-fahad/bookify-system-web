@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import SessionUtils from "@src/utils/session.utils";
 import { BookService } from "@src/services/apis";
 
 export const useBooks = () => {
@@ -9,6 +8,5 @@ export const useBooks = () => {
             const response = await BookService.getBooks({ page: 1, limit: 10 });
             return response.data;
         },
-        enabled: !!SessionUtils.getToken(),
     });
 };
